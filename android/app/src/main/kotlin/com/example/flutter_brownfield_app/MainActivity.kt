@@ -1,4 +1,4 @@
-package com.example.flutter_brownfield
+package com.example.flutter_brownfield_app
 
 import io.flutter.embedding.android.FlutterActivity
 

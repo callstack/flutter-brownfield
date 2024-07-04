@@ -1,6 +1,6 @@
 {
-    "name": "flutter_brownfield",
-    "short_name": "flutter_brownfield",
+    "name": "flutter_brownfield_app",
+    "short_name": "flutter_brownfield_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
