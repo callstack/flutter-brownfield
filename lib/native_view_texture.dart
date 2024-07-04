@@ -6,16 +6,14 @@ class NativeViewTexture extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // This is used in the platform side to register the view.
     const String viewType = 'native_view';
-    // Pass parameters to the platform side.
-    final Map<String, dynamic> creationParams = <String, dynamic>{};
+    const Map<String, dynamic> creationParams = {'text': 'Texture Layer'};
 
-    return AndroidView(
+    return const AndroidView(
       viewType: viewType,
       layoutDirection: TextDirection.ltr,
       creationParams: creationParams,
-      creationParamsCodec: const StandardMessageCodec(),
+      creationParamsCodec: StandardMessageCodec(),
     );
   }
 }

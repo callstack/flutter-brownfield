@@ -9,13 +9,11 @@ class NativeViewHybrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // This is used in the platform side to register the view.
     const String viewType = 'native_view';
-    // Pass parameters to the platform side.
-    const Map<String, dynamic> creationParams = <String, dynamic>{};
+    const Map<String, dynamic> creationParams = {'text': 'Hybrid Composition'};
 
     return PlatformViewLink(
-      viewType: viewType,
+      viewType: 'native_view',
       surfaceFactory: (context, controller) {
         return AndroidViewSurface(
           controller: controller as AndroidViewController,

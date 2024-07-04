@@ -16,9 +16,11 @@ internal class NativeView(context: Context, id: Int, creationParams: Map<String?
     override fun dispose() {}
 
     init {
+        val text = creationParams!!["text"] as String
+
         textView = TextView(context)
         textView.textSize = 72f
         textView.setBackgroundColor(Color.rgb(255, 0, 0))
-        textView.text = "Hello World (id: $id)"
+        textView.text = "Native View: $text (id: $id)"
     }
 }
