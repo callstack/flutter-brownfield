@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_brownfield_app/hello_world.dart';
 import 'package:flutter_brownfield_app/native_view_hybrid.dart';
+import 'package:flutter_brownfield_app/native_view_texture.dart';
 
 void main() {
   runApp(const MyApp());
@@ -102,6 +103,11 @@ class _MyHomePageState extends State<MyHomePage> {
             Flexible(
               flex: 1,
               child: NativeViewHybrid(),
+            ),
+            Text('Native View (Texture Layer)'),
+            Flexible(
+              flex: 1,
+              child: NativeViewTexture(),
             ),
             Text('End of views')
           ],
