@@ -3,6 +3,8 @@ plugins {
     id "kotlin-android"
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id "dev.flutter.flutter-gradle-plugin"
+    // Gradle: React Native
+	id 'com.facebook.react'
 }
 
 def localProperties = new Properties()
@@ -56,3 +58,11 @@ android {
 flutter {
     source = "../.."
 }
+
+// Gradle: React Native
+dependencies {
+	implementation 'com.facebook.react:react-android'
+	implementation 'com.facebook.react:hermes-android'
+}
+
+apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)

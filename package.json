@@ -1,0 +1,12 @@
+{
+  "name": "flutter-brownfield-app",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "start": "react-native start"
+  },
+  "dependencies": {
+    "react": "18.2.0",
+    "react-native": "0.71.11"
+  }
+}
