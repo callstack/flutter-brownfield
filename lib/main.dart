@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_brownfield_app/hello_world.dart';
 import 'package:flutter_brownfield_app/native_view_hybrid.dart';
 import 'package:flutter_brownfield_app/native_view_texture.dart';
+import 'package:flutter_brownfield_app/react_view_hybrid.dart';
+import 'package:flutter_brownfield_app/react_view_texture.dart';
 
 void main() {
   runApp(const MyApp());
@@ -95,21 +97,30 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'Flutter View',
-            ),
-            HelloWorldView(),
-            Text('Native View (Hybrid Composition)'),
+            // Text(
+            //   'Flutter View',
+            // ),
+            // HelloWorldView(),
+            // Text('Native View (Hybrid Composition)'),
+            // Flexible(
+            //   flex: 1,
+            //   child: NativeViewHybrid(),
+            // ),
+            // Text('Native View (Texture Layer)'),
+            // Flexible(
+            //   flex: 1,
+            //   child: NativeViewTexture(),
+            // ),
+            Text('React Native View using Hybrid Composition'),
             Flexible(
               flex: 1,
-              child: NativeViewHybrid(),
+              child: ReactViewHybrid(moduleName: "Hello"),
             ),
-            Text('Native View (Texture Layer)'),
+            Text('React Native View using Texture Layer'),
             Flexible(
               flex: 1,
-              child: NativeViewTexture(),
+              child: ReactViewTexture(moduleName: "ReactNativeScreen"),
             ),
-            Text('End of views')
           ],
         ),
       ),

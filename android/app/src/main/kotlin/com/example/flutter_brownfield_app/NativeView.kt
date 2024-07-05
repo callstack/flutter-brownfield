@@ -20,7 +20,7 @@ internal class NativeView(context: Context, id: Int, creationParams: Map<String?
         val text = creationParams!!["text"] as String
 
         textView = TextView(context)
-        textView.textSize = 72f
+        textView.textSize = 20f
         textView.setBackgroundColor(Color.rgb(255, 0, 0))
         textView.text = "Native View: $text (id: $id)"
         textView.setOnClickListener {
