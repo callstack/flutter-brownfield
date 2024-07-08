@@ -9,8 +9,7 @@ import com.facebook.react.defaults.DefaultReactNativeHost
 import com.facebook.soloader.SoLoader
 
 class MainApplication: Application(), ReactApplication {
-
-    private val reactNativeHost =
+    override val reactNativeHost =
         object : DefaultReactNativeHost(this) {
             override fun getPackages(): List<ReactPackage> {
                 val packages = PackageList(this).packages.toMutableList()
@@ -27,6 +26,4 @@ class MainApplication: Application(), ReactApplication {
         super.onCreate()
         SoLoader.init(this, false)
     }
-
-    override fun getReactNativeHost(): ReactNativeHost = reactNativeHost
 }

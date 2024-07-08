@@ -7,10 +7,10 @@
   },
   "dependencies": {
     "react": "18.2.0",
-    "react-native": "0.72.15"
+    "react-native": "0.73.8"
   },
   "devDependencies": {
-    "@react-native/metro-config": "^0.72.12"
+    "@react-native/metro-config": "^0.73.5"
   },
   "engines": {
     "node": ">=16"
