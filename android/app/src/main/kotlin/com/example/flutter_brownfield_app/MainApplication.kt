@@ -12,15 +12,15 @@ class MainApplication: Application(), ReactApplication {
 
     private val reactNativeHost =
         object : DefaultReactNativeHost(this) {
-            override fun getUseDeveloperSupport() = BuildConfig.DEBUG
             override fun getPackages(): List<ReactPackage> {
                 val packages = PackageList(this).packages.toMutableList()
                 // Packages that cannot be auto-linked yet can be added manually here
                 return packages
             }
-            override fun getJSMainModuleName(): String {
-                return "index"
-            }
+
+            override fun getJSMainModuleName(): String = "index"
+
+            override fun getUseDeveloperSupport() = BuildConfig.DEBUG
         }
 
     override fun onCreate() {
