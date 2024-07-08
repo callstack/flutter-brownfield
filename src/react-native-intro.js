@@ -52,7 +52,7 @@ function Section({ children, title }) {
   );
 }
 
-export function ReactNativeScreen() {
+export function ReactNativeIntro() {
   const isDarkMode = useColorScheme() === "dark";
 
   const backgroundStyle = {

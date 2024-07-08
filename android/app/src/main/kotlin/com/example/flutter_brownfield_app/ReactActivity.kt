@@ -31,7 +31,7 @@ class ReactActivity : Activity(), DefaultHardwareBackBtnHandler {
 			.setUseDeveloperSupport(BuildConfig.DEBUG)
 			.setInitialLifecycleState(LifecycleState.RESUMED)
 			.build()
-		mReactRootView!!.startReactApplication(mReactInstanceManager, "ReactNativeScreen", null)
+		mReactRootView!!.startReactApplication(mReactInstanceManager, "ReactNativeIntro", null)
 
 		setContentView(mReactRootView)
 	}

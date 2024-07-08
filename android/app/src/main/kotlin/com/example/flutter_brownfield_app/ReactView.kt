@@ -6,7 +6,7 @@ import com.facebook.react.ReactRootView
 import io.flutter.plugin.platform.PlatformView
 
 internal class ReactView(context: Context, id: Int, creationParams: Map<String?, Any?>?) : PlatformView {
-    private val reactInstanceManager = (context.applicationContext as MainApplication).reactInstanceManager
+    private val reactNativeHost = (context.applicationContext as MainApplication).reactNativeHost
     private val reactRootView: ReactRootView = ReactRootView(context)
 
     override fun getView(): View {
@@ -19,6 +19,6 @@ internal class ReactView(context: Context, id: Int, creationParams: Map<String?,
 
     init {
         val moduleName = creationParams?.get("moduleName") as String
-        reactRootView.startReactApplication(reactInstanceManager, moduleName, null)
+        reactRootView.startReactApplication(reactNativeHost.reactInstanceManager, moduleName, null)
     }
 }
