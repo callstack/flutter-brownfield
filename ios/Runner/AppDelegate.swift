@@ -14,11 +14,11 @@ import UIKit
       FLNativeViewFactory(messenger: pluginRegistrar.messenger()),
       withId: "native_view"
     )
-
     pluginRegistrar.register(
       FLReactViewFactory(messenger: pluginRegistrar.messenger()),
       withId: "react_view"
     )
+    
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 }
