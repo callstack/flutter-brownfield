@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_brownfield_app/native_view_ios.dart';
 import 'package:flutter_brownfield_app/react_view_hybrid.dart';
 import 'package:flutter_brownfield_app/react_view_texture.dart';
 
@@ -95,14 +96,15 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text('React Native view (using Hybrid Composition)'),
-            Flexible(
-              flex: 1,
-              child: ReactViewHybrid(moduleName: "ReactNativeIntro"),
-            ),
+            // Flexible(
+            //   flex: 1,
+            //   child: ReactViewHybrid(moduleName: "ReactNativeIntro"),
+            // ),
             Text('React Native view (using Texture Layer)'),
             Flexible(
               flex: 1,
-              child: ReactViewTexture(moduleName: "ReactNativeIntro"),
+              child: NativeViewIos(),
+              //child: ReactViewTexture(moduleName: "ReactNativeIntro"),
             ),
           ],
         ),
