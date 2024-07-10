@@ -1,5 +1,6 @@
 {
   "name": "flutter-brownfield-app",
+  "description": "Essential React Native brownfield integration in a template Flutter app",
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {

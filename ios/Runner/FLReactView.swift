@@ -2,6 +2,10 @@ import Flutter
 import React
 import UIKit
 
+/**
+ * Used by Flutter to create instances of FLReactView.
+ * @see https://docs.flutter.dev/platform-integration/ios/platform-views
+ */
 class FLReactViewFactory: NSObject, FlutterPlatformViewFactory {
     private var messenger: FlutterBinaryMessenger
 
@@ -23,12 +27,19 @@ class FLReactViewFactory: NSObject, FlutterPlatformViewFactory {
             binaryMessenger: messenger)
     }
 
-    /// Implementing this method is only necessary when the `arguments` in `createWithFrame` is not `nil`.
     public func createArgsCodec() -> FlutterMessageCodec & NSObjectProtocol {
           return FlutterStandardMessageCodec.sharedInstance()
     }
 }
 
+/**
+ * Flutter platform view hosting React root view.
+ *
+ * It receives `moduleName` argument representing React component to load, it should match the
+ * name of the component registered by `AppRegistry.registerComponent` in the React Native app.
+ *
+ * @see https://docs.flutter.dev/platform-integration/ios/platform-views
+ */
 class FLReactView: NSObject, FlutterPlatformView {
     private var reactRootView: RCTRootView
 

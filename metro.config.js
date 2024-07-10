@@ -1,3 +1,6 @@
+// Default metro.config.js from React Native template
+// See: https://github.com/react-native-community/template/blob/main/template/metro.config.js
+
 const { getDefaultConfig, mergeConfig } = require("@react-native/metro-config");
 
 /**

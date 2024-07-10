@@ -3,7 +3,9 @@ plugins {
     id "org.jetbrains.kotlin.android"
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id "dev.flutter.flutter-gradle-plugin"
-    // Gradle: React Native
+
+    // Apply React Native plugin
+    // See: https://github.com/react-native-community/template/blob/main/template/android/app/build.gradle
 	id 'com.facebook.react'
 }
 
@@ -40,8 +42,12 @@ android {
         applicationId = "com.example.flutter_brownfield_app"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
+
+        // Updated MinSDK to match higher of Flutter and React Native values
         minSdk = 23 // flutter.minSdkVersion // = 21
-        targetSdk = 34 // flutter.targetSdkVersion // = 34
+
+        // Same for current version for both Flutter and React Native
+        targetSdk = 34 // flutter.targetSdkVersion
         versionCode = flutterVersionCode.toInteger()
         versionName = flutterVersionName
     }
@@ -59,10 +65,12 @@ flutter {
     source = "../.."
 }
 
-// Gradle: React Native
+// React Native setup
+// See: https://github.com/react-native-community/template/blob/main/template/android/app/build.gradle
 dependencies {
 	implementation 'com.facebook.react:react-android'
 	implementation 'com.facebook.react:hermes-android'
 }
 
+// Enable React Native autolinking
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)

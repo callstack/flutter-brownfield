@@ -1,16 +1,14 @@
-# flutter_brownfield_app
+# Flutter app with React Native brownfield setup
 
-A new Flutter project.
+This is a model setup for adding React Native to an existing Flutter app.
 
-## Getting Started
+I've used basic template Flutter app to keep things simple and easy-to-understand. Relevant parts of code are annotated for easier reading. This example uses the latest versions of Flutter (3.22) and React Native (0.74.3) at the time of writting.
 
-This project is a starting point for a Flutter application.
+## Setup process
 
-A few resources to get you started if this is your first Flutter project:
+This app has been created from Flutter template, and then I've added iOS and Android integration for React Native based on following documenentation:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [Flutter docs: Host a native iOS view](https://docs.flutter.dev/platform-integration/ios/platform-views)
+- [Flutter docs: Host a native Android view](https://docs.flutter.dev/platform-integration/android/platform-views)
+- [React Native docs: Integration with Existing Apps](https://reactnative.dev/docs/integration-with-existing-apps)
+- [React Native docs: Integration with Android Fragment](https://reactnative.dev/docs/integration-with-android-fragment)

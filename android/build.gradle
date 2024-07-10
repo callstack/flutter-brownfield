@@ -17,7 +17,8 @@ tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }
 
-// Gradle: React Native
+// React Native setup
+// See: https://github.com/react-native-community/template/blob/main/template/android/build.gradle
 buildscript {
 	repositories {
 		google()

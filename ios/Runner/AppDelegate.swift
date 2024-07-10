@@ -9,11 +9,9 @@ import UIKit
   ) -> Bool {
     GeneratedPluginRegistrant.register(with: self)
 
+    // Register FLReactViewFactory with Flutter engine.
+    // See: https://docs.flutter.dev/platform-integration/ios/platform-views
     guard let pluginRegistrar = self.registrar(forPlugin: "plugin-name") else { return false }
-    pluginRegistrar.register(
-      FLNativeViewFactory(messenger: pluginRegistrar.messenger()),
-      withId: "native_view"
-    )
     pluginRegistrar.register(
       FLReactViewFactory(messenger: pluginRegistrar.messenger()),
       withId: "react_view"

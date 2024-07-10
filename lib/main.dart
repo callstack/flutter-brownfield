@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_brownfield_app/react_view.dart';
-import 'package:flutter_brownfield_app/react_view_android.dart';
 
 void main() {
   runApp(const MyApp());
