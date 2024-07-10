@@ -1,3 +1,6 @@
+# Template Podfile used by React Native
+# See: https://github.com/react-native-community/template/blob/main/template/ios/Podfile
+
 # Resolve react_native_pods.rb with node to allow for hoisting
 require Pod::Executable.execute_command('node', ['-p',
   'require.resolve(

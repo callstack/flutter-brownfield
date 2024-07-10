@@ -52,6 +52,9 @@ function Section({ children, title }) {
   );
 }
 
+/**
+ * Default React Native intro component.
+ */
 export function ReactNativeIntro() {
   const isDarkMode = useColorScheme() === "dark";
 
@@ -61,10 +64,6 @@ export function ReactNativeIntro() {
 
   return (
     <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? "light-content" : "dark-content"}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}

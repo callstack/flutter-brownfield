@@ -2,6 +2,10 @@ import Flutter
 import React
 import UIKit
 
+/**
+ * Used by Flutter to create instances of FLReactView.
+ * @see https://docs.flutter.dev/platform-integration/ios/platform-views
+ */
 class FLReactViewFactory: NSObject, FlutterPlatformViewFactory {
     private var messenger: FlutterBinaryMessenger
 
@@ -15,32 +19,40 @@ class FLReactViewFactory: NSObject, FlutterPlatformViewFactory {
         viewIdentifier viewId: Int64,
         arguments args: Any?
     ) -> FlutterPlatformView {
+        let creationParams = args as? [String: Any]
         return FLReactView(
             frame: frame,
             viewIdentifier: viewId,
-            arguments: args,
+            arguments: creationParams,
             binaryMessenger: messenger)
     }
 
-    /// Implementing this method is only necessary when the `arguments` in `createWithFrame` is not `nil`.
     public func createArgsCodec() -> FlutterMessageCodec & NSObjectProtocol {
           return FlutterStandardMessageCodec.sharedInstance()
     }
 }
 
+/**
+ * Flutter platform view hosting React root view.
+ *
+ * It receives `moduleName` argument representing React component to load, it should match the
+ * name of the component registered by `AppRegistry.registerComponent` in the React Native app.
+ *
+ * @see https://docs.flutter.dev/platform-integration/ios/platform-views
+ */
 class FLReactView: NSObject, FlutterPlatformView {
-    private var _view: RCTRootView
+    private var reactRootView: RCTRootView
 
     init(
         frame: CGRect,
         viewIdentifier viewId: Int64,
-        arguments args: Any?,
+        arguments args: [String: Any]?,
         binaryMessenger messenger: FlutterBinaryMessenger?
     ) {
         let jsCodeLocation = URL(string: "http://localhost:8081/index.bundle?platform=ios")!
-        _view = RCTRootView(
+        reactRootView = RCTRootView(
             bundleURL: jsCodeLocation,
-            moduleName: "ReactNativeIntro",
+            moduleName: args!["moduleName"] as! String,
             initialProperties: [:] as [NSObject : AnyObject],
             launchOptions: nil
         )
@@ -48,6 +60,6 @@ class FLReactView: NSObject, FlutterPlatformView {
     }
 
     func view() -> UIView {
-        return _view
+        return reactRootView
     }
 }

@@ -1,10 +1,13 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
+/**
+ * Sample Hello World component.
+ */
 export function Hello() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Hello React Native</Text>
+      <Text style={styles.text}>Hello React Native!</Text>
     </View>
   );
 }
