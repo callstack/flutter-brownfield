@@ -12,3 +12,9 @@ This app has been created from Flutter template, and then I've added iOS and And
 - [Flutter docs: Host a native Android view](https://docs.flutter.dev/platform-integration/android/platform-views)
 - [React Native docs: Integration with Existing Apps](https://reactnative.dev/docs/integration-with-existing-apps)
 - [React Native docs: Integration with Android Fragment](https://reactnative.dev/docs/integration-with-android-fragment)
+
+## Screenshots
+
+|                    iOS                     |                      Android                       |
+| :----------------------------------------: | :------------------------------------------------: |
+| ![iOS](docs/images/flutter-brownfield-ios) | ![Android](docs/images/flutter-brownfield-android) |
