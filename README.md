@@ -15,6 +15,6 @@ This app has been created from Flutter template, and then I've added iOS and And
 
 ## Screenshots
 
-|                    iOS                     |                      Android                       |
-| :----------------------------------------: | :------------------------------------------------: |
-| ![iOS](docs/images/flutter-brownfield-ios) | ![Android](docs/images/flutter-brownfield-android) |
+|                                                                          iOS                                                                          |                                                        Android                                                         |
+| :---------------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------: |
+| ![iOS](https://raw.githubusercontent.com/callstack/flutter-brownfield/main/docs/images/flutter-brownfield-ios.png docs/images/flutter-brownfield-ios) | ![Android](https://raw.githubusercontent.com/callstack/flutter-brownfield/main/docs/images/flutter-brownfield-android) |
