@@ -15,10 +15,11 @@ class FLReactViewFactory: NSObject, FlutterPlatformViewFactory {
         viewIdentifier viewId: Int64,
         arguments args: Any?
     ) -> FlutterPlatformView {
+        let creationParams = args as? [String: Any]
         return FLReactView(
             frame: frame,
             viewIdentifier: viewId,
-            arguments: args,
+            arguments: creationParams,
             binaryMessenger: messenger)
     }
 
@@ -29,18 +30,18 @@ class FLReactViewFactory: NSObject, FlutterPlatformViewFactory {
 }
 
 class FLReactView: NSObject, FlutterPlatformView {
-    private var _view: RCTRootView
+    private var reactRootView: RCTRootView
 
     init(
         frame: CGRect,
         viewIdentifier viewId: Int64,
-        arguments args: Any?,
+        arguments args: [String: Any]?,
         binaryMessenger messenger: FlutterBinaryMessenger?
     ) {
         let jsCodeLocation = URL(string: "http://localhost:8081/index.bundle?platform=ios")!
-        _view = RCTRootView(
+        reactRootView = RCTRootView(
             bundleURL: jsCodeLocation,
-            moduleName: "ReactNativeIntro",
+            moduleName: args!["moduleName"] as! String,
             initialProperties: [:] as [NSObject : AnyObject],
             launchOptions: nil
         )
@@ -48,6 +49,6 @@ class FLReactView: NSObject, FlutterPlatformView {
     }
 
     func view() -> UIView {
-        return _view
+        return reactRootView
     }
 }

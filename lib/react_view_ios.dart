@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+/// ReactView for iOS using Hybrid Composition mechanism.
+/// https://docs.flutter.dev/platform-integration/ios/platform-views
 class ReactViewIos extends StatelessWidget {
-  const ReactViewIos({super.key});
+  /// The name of the React Native module to be rendered.
+  ///
+  /// It should match the key used in AppRegistry.registerComponent() in the React Native code
+  /// on the JavaScript side.
+  final String moduleName;
+
+  const ReactViewIos({super.key, required this.moduleName});
 
   @override
   Widget build(BuildContext context) {
-    // This is used in the platform side to register the view.
     const String viewType = 'react_view';
-    // Pass parameters to the platform side.
-    final Map<String, dynamic> creationParams = <String, dynamic>{};
+    Map<String, dynamic> creationParams = {"moduleName": moduleName};
 
     return UiKitView(
       viewType: viewType,
