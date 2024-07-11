@@ -34,10 +34,11 @@ class ListScreen extends StatelessWidget {
     ListItem(title: '<Counter /> component', moduleName: 'Counter'),
     ListItem(
         title: '<ReactNativeIntro /> screen', moduleName: 'ReactNativeIntro'),
+    ListItem(title: 'React Navigation flow', moduleName: 'ReactNavigationFlow'),
     ListItem(
-        title: '<ReactNativeWebView /> component',
+        title: 'React Native WebView example',
         moduleName: 'ReactNativeWebView'),
-    ListItem(title: '<Reanimated /> example', moduleName: 'Reanimated'),
+    ListItem(title: 'Reanimated example', moduleName: 'Reanimated'),
   ];
 
   ListScreen({super.key});

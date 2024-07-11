@@ -1,62 +1,34 @@
 package com.example.flutter_brownfield_app
 
-import android.content.Intent
+import android.os.Bundle
 import android.view.KeyEvent
+import androidx.appcompat.app.AppCompatActivity
 import com.facebook.react.ReactInstanceManager
 import com.facebook.react.ReactNativeHost
+import com.facebook.react.ReactRootView
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler
-import io.flutter.embedding.android.FlutterActivity
-import io.flutter.embedding.engine.FlutterEngine
-import io.flutter.plugin.common.MethodChannel
 
-/**
- * Basic FlutterActivity extended with React Native hooks
- *
- * See:
- * - https://reactnative.dev/docs/integration-with-existing-apps
- * - https://reactnative.dev/docs/integration-with-android-fragment
- */
-class MainActivity: FlutterActivity(), DefaultHardwareBackBtnHandler {
-    companion object {
-        // Communication channel with Flutter. Used to receive native code calls.
-        private const val FLUTTER_CHANNEL = "nativeChannel"
-    }
-
+class ReactActivity : AppCompatActivity(), DefaultHardwareBackBtnHandler {
     // Easy access to ReactNativeHost
     private val reactNativeHost: ReactNativeHost
         get() = (application as MainApplication).reactNativeHost
+
     // Easy access to ReactNativeHost
     private val reactInstanceManager: ReactInstanceManager
         get() = (application as MainApplication).reactNativeHost.reactInstanceManager
+    private var rootView: ReactRootView? = null
 
-    override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
-        super.configureFlutterEngine(flutterEngine)
 
-        // Register ReactViewFactory with Flutter engine
-        // See: https://docs.flutter.dev/platform-integration/android/platform-views#on-the-platform-side
-        flutterEngine
-            .platformViewsController
-            .registry
-            .registerViewFactory("react_view", ReactViewFactory())
+    override fun onCreate(savedInstanceState: Bundle?) {
+        // Passing null recommended by React Navigation docs
+        // See: https://reactnavigation.org/docs/getting-started/
+        super.onCreate(null)
 
-        // Register MethodChannel, so we can call it from Flutter code.
-        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, FLUTTER_CHANNEL).setMethodCallHandler {
-                call, result ->
-            if (call.method == "navigateToReactNative") {
-                val moduleName = call.argument<String>("moduleName")!!
-                startReactNativeActivity(moduleName)
-                result.success(null)
-            } else {
-                result.notImplemented()
-            }
-        }
-    }
+        val moduleName = intent.getStringExtra("moduleName")!!
 
-    fun startReactNativeActivity(moduleName: String) {
-        val intent = Intent(this, ReactActivity::class.java).apply {
-            putExtra("moduleName", moduleName)
-        }
-        startActivity(intent)
+        rootView = ReactRootView(this)
+        rootView!!.startReactApplication(reactInstanceManager, moduleName, null)
+        setContentView(rootView)
     }
 
     // Inform React Native Host about "onPause" lifecycle event
@@ -74,6 +46,8 @@ class MainActivity: FlutterActivity(), DefaultHardwareBackBtnHandler {
     // Inform React Native Host about "onDestroy" lifecycle event
     override fun onDestroy() {
         super.onDestroy()
+
+        rootView?.unmountReactApplication()
         reactInstanceManager.onHostDestroy(this)
     }
 
