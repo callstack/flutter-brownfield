@@ -29,9 +29,11 @@ if (flutterVersionName == null) {
 
 android {
     namespace = "com.example.flutter_brownfield_app"
-    compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
 
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdk rootProject.ext.compileSdkVersion // flutter.compileSdkVersion = 34
+    ndkVersion rootProject.ext.ndkVersion // flutter.ndkVersion = "23.1.7779620
+    
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -44,10 +46,10 @@ android {
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
 
         // Updated MinSDK to match higher of Flutter and React Native values
-        minSdk = 23 // flutter.minSdkVersion // = 21
+        minSdk rootProject.ext.minSdkVersion // flutter.minSdkVersion // = 21
 
         // Same for current version for both Flutter and React Native
-        targetSdk = 34 // flutter.targetSdkVersion
+        targetSdk rootProject.ext.targetSdkVersion // flutter.targetSdkVersion
         versionCode = flutterVersionCode.toInteger()
         versionName = flutterVersionName
     }
