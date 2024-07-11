@@ -1,6 +1,10 @@
-import { Button, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
 import Animated, { useSharedValue, withSpring } from "react-native-reanimated";
 
+/**
+ * Basic Reanimated example.
+ * See: https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/your-first-animation
+ */
 export function Reanimated() {
   const width = useSharedValue(100);
 
@@ -14,10 +18,13 @@ export function Reanimated() {
         style={{
           width,
           height: 100,
-          backgroundColor: "violet",
+          backgroundColor: "blue",
         }}
       />
-      <Button onPress={handlePress} title="Click me" />
+
+      <Pressable onPress={handlePress} style={{ marginTop: 10 }}>
+        <Text>Press me</Text>
+      </Pressable>
     </View>
   );
 }
