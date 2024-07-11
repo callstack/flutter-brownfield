@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 /**
- * Sample Hello World component.
+ * Basic Hello World component.
  */
 export function Hello() {
   return (

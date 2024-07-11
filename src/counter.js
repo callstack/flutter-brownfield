@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Pressable, Text, View } from "react-native";
 
 /**
- * Sample Counter component.
+ * Basic Counter component.
  */
 export function Counter() {
   const [count, setCount] = React.useState(0);
