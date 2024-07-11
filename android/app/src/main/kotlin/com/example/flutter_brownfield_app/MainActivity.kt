@@ -19,7 +19,7 @@ import io.flutter.plugin.common.MethodChannel
 class MainActivity: FlutterActivity(), DefaultHardwareBackBtnHandler {
     companion object {
         // Communication channel with Flutter. Used to receive native code calls.
-        private const val FLUTTER_CHANNEL = "nativeChannel"
+        private const val FLUTTER_CHANNEL = "flutter-brownfield/native"
     }
 
     // Easy access to ReactNativeHost
