@@ -44,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Text('React Native <Hello /> component'),
             Flexible(
-              flex: 1,
+              flex: 6,
               child: ReactView(moduleName: "Hello"),
             ),
             Text('React Native <Counter> component'),
@@ -57,6 +57,12 @@ class _MyHomePageState extends State<MyHomePage> {
               flex: 8,
               child: ReactView(moduleName: "ReactNativeIntro"),
             ),
+            // Uncomment for Reanimated example
+            // Text('<Reanimated /> component'),
+            // Flexible(
+            //   flex: 1,
+            //   child: ReactView(moduleName: "Reanimated"),
+            // )
           ],
         ),
       ),
