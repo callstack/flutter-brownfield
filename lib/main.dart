@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_brownfield_app/react_view.dart';
 
 void main() {
@@ -29,7 +30,8 @@ class ListItem {
 }
 
 class ListScreen extends StatelessWidget {
-  final List<ListItem> modules = [
+  final platform = const MethodChannel('flutter-brownfield/native');
+  final items = [
     ListItem(title: '<Hello /> component', moduleName: 'Hello'),
     ListItem(title: '<Counter /> component', moduleName: 'Counter'),
     ListItem(
@@ -51,16 +53,22 @@ class ListScreen extends StatelessWidget {
         //backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: ListView.builder(
-        itemCount: modules.length,
+        itemCount: items.length,
         itemBuilder: (context, index) {
           return ListTile(
-            title: Text(modules[index].title),
-            onTap: () {
+            title: Text(items[index].title),
+            onTap: () async {
+              ListItem item = items[index];
+              if (item.moduleName == 'ReactNavigationFlow') {
+                await platform.invokeMethod(
+                    'navigateToReactNative', {'moduleName': item.moduleName});
+                return;
+              }
+
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => DetailsScreen(item: modules[index]),
-                ),
+                    builder: (context) => DetailsScreen(item: item)),
               );
             },
           );
