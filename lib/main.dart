@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_brownfield_app/react_view.dart';
 
 void main() {
@@ -22,22 +23,45 @@ class App extends StatelessWidget {
 }
 
 class ListItem {
+  // Title to display in the list.
   final String title;
+
+  // React component name to render.
   final String moduleName;
 
-  ListItem({required this.title, required this.moduleName});
+  // Is this a screen flow, which contains it's own screen navigation using React Navigation.
+  final bool? isFlow;
+
+  ListItem({required this.title, required this.moduleName, this.isFlow});
 }
 
 class ListScreen extends StatelessWidget {
-  final List<ListItem> modules = [
-    ListItem(title: '<Hello /> component', moduleName: 'Hello'),
-    ListItem(title: '<Counter /> component', moduleName: 'Counter'),
+  final platform = const MethodChannel('flutter-brownfield/native');
+  final items = [
     ListItem(
-        title: '<ReactNativeIntro /> screen', moduleName: 'ReactNativeIntro'),
+      title: '<Hello /> component',
+      moduleName: 'Hello',
+    ),
     ListItem(
-        title: '<ReactNativeWebView /> component',
-        moduleName: 'ReactNativeWebView'),
-    ListItem(title: '<Reanimated /> example', moduleName: 'Reanimated'),
+      title: '<Counter /> component',
+      moduleName: 'Counter',
+    ),
+    ListItem(
+      title: '<ReactNativeIntro /> screen',
+      moduleName: 'ReactNativeIntro',
+    ),
+    ListItem(
+        title: 'React Navigation flow',
+        moduleName: 'ReactNavigationFlow',
+        isFlow: true),
+    ListItem(
+      title: 'React Native WebView example',
+      moduleName: 'ReactNativeWebView',
+    ),
+    ListItem(
+      title: 'Reanimated example',
+      moduleName: 'Reanimated',
+    ),
   ];
 
   ListScreen({super.key});
@@ -50,16 +74,24 @@ class ListScreen extends StatelessWidget {
         //backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: ListView.builder(
-        itemCount: modules.length,
+        itemCount: items.length,
         itemBuilder: (context, index) {
           return ListTile(
-            title: Text(modules[index].title),
-            onTap: () {
+            title: Text(items[index].title),
+            onTap: () async {
+              ListItem item = items[index];
+              // If the item is a flow, navigate to a separate React Native ViewController/Activity.
+              if (item.isFlow == true) {
+                await platform.invokeMethod(
+                    'navigateToReactNative', {'moduleName': item.moduleName});
+                return;
+              }
+
+              // Otherwise, use Flutter navigation.
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => DetailsScreen(item: modules[index]),
-                ),
+                    builder: (context) => DetailsScreen(item: item)),
               );
             },
           );

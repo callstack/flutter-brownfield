@@ -12,10 +12,18 @@ It contains a basic Flutter app with added React Native brownfield integration. 
 
 - [x] Basic React Native brownfield setup
 - [x] Added some popular React Native libraries:
-  - [ ] React Navigation
+  - [x] React Navigation
   - [x] Reanimated
   - [x] React Native WebView
 - [x] Functioning hot reload for both React Native and Flutter
+
+## Running
+
+1. Run `yarn install`
+2. Install Cocoapods: `cd ios; pod install`
+3. Start Metro bundler in the root folder: `yarn start`
+4. Open the root folder in VS Code
+5. In VS Code, open `main.dart` and open Run -> Start Debugging menu option
 
 ## Screenshots
 

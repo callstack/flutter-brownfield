@@ -1,20 +1,27 @@
 package com.example.flutter_brownfield_app
 
+import android.content.Intent
 import android.view.KeyEvent
 import com.facebook.react.ReactInstanceManager
 import com.facebook.react.ReactNativeHost
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
+import io.flutter.plugin.common.MethodChannel
 
 /**
- * Basic FlutterActivity extended with React Native hooks
+ * Basic FlutterActivity extended with React Native lifecycle hooks/
  *
  * See:
  * - https://reactnative.dev/docs/integration-with-existing-apps
  * - https://reactnative.dev/docs/integration-with-android-fragment
  */
 class MainActivity: FlutterActivity(), DefaultHardwareBackBtnHandler {
+    companion object {
+        // Communication channel with Flutter. Used to receive native code calls.
+        private const val FLUTTER_CHANNEL = "flutter-brownfield/native"
+    }
+
     // Easy access to ReactNativeHost
     private val reactNativeHost: ReactNativeHost
         get() = (application as MainApplication).reactNativeHost
@@ -31,6 +38,25 @@ class MainActivity: FlutterActivity(), DefaultHardwareBackBtnHandler {
             .platformViewsController
             .registry
             .registerViewFactory("react_view", ReactViewFactory())
+
+        // Register MethodChannel, so we can call it from Flutter code.
+        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, FLUTTER_CHANNEL).setMethodCallHandler {
+                call, result ->
+            if (call.method == "navigateToReactNative") {
+                val moduleName = call.argument<String>("moduleName")!!
+                startReactNativeActivity(moduleName)
+                result.success(null)
+            } else {
+                result.notImplemented()
+            }
+        }
+    }
+
+    private fun startReactNativeActivity(moduleName: String) {
+        val intent = Intent(this, ReactActivity::class.java).apply {
+            putExtra("moduleName", moduleName)
+        }
+        startActivity(intent)
     }
 
     // Inform React Native Host about "onPause" lifecycle event

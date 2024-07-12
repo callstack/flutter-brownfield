@@ -3,7 +3,7 @@ import React
 import UIKit
 
 /**
- * Used by Flutter to create instances of FLReactView.
+ * Factory used by Flutter to create instances of FLReactView.
  * @see https://docs.flutter.dev/platform-integration/ios/platform-views
  */
 class FLReactViewFactory: NSObject, FlutterPlatformViewFactory {
