@@ -1,6 +1,6 @@
 # Flutter app with React Native brownfield POC
 
-<img src="https://raw.githubusercontent.com/callstack/flutter-brownfield/main/docs/images/flutter-react-love.png" />
+<img src="https://raw.githubusercontent.com/callstack/flutter-brownfield/main/docs/images/flutter-react-love.jpg" />
 
 This repository contains a proof-of-concept for adding React Native to an existing Flutter app.
 
