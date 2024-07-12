@@ -23,24 +23,45 @@ class App extends StatelessWidget {
 }
 
 class ListItem {
+  // Title to display in the list.
   final String title;
+
+  // React component name to render.
   final String moduleName;
 
-  ListItem({required this.title, required this.moduleName});
+  // Is this a screen flow, which contains it's own screen navigation using React Navigation.
+  final bool? isFlow;
+
+  ListItem({required this.title, required this.moduleName, this.isFlow});
 }
 
 class ListScreen extends StatelessWidget {
   final platform = const MethodChannel('flutter-brownfield/native');
   final items = [
-    ListItem(title: '<Hello /> component', moduleName: 'Hello'),
-    ListItem(title: '<Counter /> component', moduleName: 'Counter'),
     ListItem(
-        title: '<ReactNativeIntro /> screen', moduleName: 'ReactNativeIntro'),
-    ListItem(title: 'React Navigation flow', moduleName: 'ReactNavigationFlow'),
+      title: '<Hello /> component',
+      moduleName: 'Hello',
+    ),
     ListItem(
-        title: 'React Native WebView example',
-        moduleName: 'ReactNativeWebView'),
-    ListItem(title: 'Reanimated example', moduleName: 'Reanimated'),
+      title: '<Counter /> component',
+      moduleName: 'Counter',
+    ),
+    ListItem(
+      title: '<ReactNativeIntro /> screen',
+      moduleName: 'ReactNativeIntro',
+    ),
+    ListItem(
+        title: 'React Navigation flow',
+        moduleName: 'ReactNavigationFlow',
+        isFlow: true),
+    ListItem(
+      title: 'React Native WebView example',
+      moduleName: 'ReactNativeWebView',
+    ),
+    ListItem(
+      title: 'Reanimated example',
+      moduleName: 'Reanimated',
+    ),
   ];
 
   ListScreen({super.key});
@@ -59,12 +80,14 @@ class ListScreen extends StatelessWidget {
             title: Text(items[index].title),
             onTap: () async {
               ListItem item = items[index];
-              if (item.moduleName == 'ReactNavigationFlow') {
+              // If the item is a flow, navigate to a separate React Native ViewController/Activity.
+              if (item.isFlow == true) {
                 await platform.invokeMethod(
                     'navigateToReactNative', {'moduleName': item.moduleName});
                 return;
               }
 
+              // Otherwise, use Flutter navigation.
               Navigator.push(
                 context,
                 MaterialPageRoute(

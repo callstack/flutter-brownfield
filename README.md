@@ -17,6 +17,14 @@ It contains a basic Flutter app with added React Native brownfield integration. 
   - [x] React Native WebView
 - [x] Functioning hot reload for both React Native and Flutter
 
+## Running
+
+1. Run `yarn install`
+2. Install Cocoapods: `cd ios; pod install`
+3. Start Metro bundler in the root folder: `yarn start`
+4. Open the root folder in VS Code
+5. In VS Code, open `main.dart` and open Run -> Start Debugging menu option
+
 ## Screenshots
 
 |                                                           iOS                                                            |                                                           Android                                                            |

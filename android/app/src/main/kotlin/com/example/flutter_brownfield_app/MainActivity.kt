@@ -52,7 +52,7 @@ class MainActivity: FlutterActivity(), DefaultHardwareBackBtnHandler {
         }
     }
 
-    fun startReactNativeActivity(moduleName: String) {
+    private fun startReactNativeActivity(moduleName: String) {
         val intent = Intent(this, ReactActivity::class.java).apply {
             putExtra("moduleName", moduleName)
         }
