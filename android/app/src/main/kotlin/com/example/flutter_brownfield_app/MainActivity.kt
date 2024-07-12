@@ -10,7 +10,7 @@ import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
 
 /**
- * Basic FlutterActivity extended with React Native hooks
+ * Basic FlutterActivity extended with React Native lifecycle hooks/
  *
  * See:
  * - https://reactnative.dev/docs/integration-with-existing-apps

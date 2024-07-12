@@ -47,6 +47,11 @@ import UIKit
         return super.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
+    /**
+     * Present React Native components inside a separate ViewController. This is useful if you want to use React Navigation to manage the screen transitions.
+     *
+     * Use FLReactView if you want to use React Native views side-by-side with Flutter views on the same screen.
+     */
     func presentReactNativeViewController(
         moduleName: String
     ) {

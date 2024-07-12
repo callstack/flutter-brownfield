@@ -8,6 +8,11 @@ import com.facebook.react.ReactNativeHost
 import com.facebook.react.ReactRootView
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler
 
+/**
+ * This activity is used to display React Native flows with navigation managed by React Navigation.
+ *
+ * If you want to present React Native views side-by-side with Flutter views, use ReactView.
+ */
 class ReactActivity : AppCompatActivity(), DefaultHardwareBackBtnHandler {
     // Easy access to ReactNativeHost
     private val reactNativeHost: ReactNativeHost
