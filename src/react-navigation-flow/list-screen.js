@@ -2,12 +2,9 @@ import * as React from "react";
 import { StyleSheet, Text, FlatList, Pressable } from "react-native";
 
 const websites = [
-  { name: "Callstack", url: "https://callstack.com" },
-  { name: "React Native", url: "https://reactnative.dev" },
-  { name: "Callstack", url: "https://callstack.com" },
-  { name: "React Native", url: "https://reactnative.dev" },
-  { name: "Callstack", url: "https://callstack.com" },
-  { name: "React Native", url: "https://reactnative.dev" },
+  { name: "Callstack", url: "https://callstack.com/" },
+  { name: "React Native", url: "https://reactnative.dev/" },
+  { name: "Flutter", url: "https://flutter.dev/" },
 ];
 
 export function ListScreen({ navigation }) {

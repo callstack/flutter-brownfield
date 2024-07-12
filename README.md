@@ -12,7 +12,7 @@ It contains a basic Flutter app with added React Native brownfield integration. 
 
 - [x] Basic React Native brownfield setup
 - [x] Added some popular React Native libraries:
-  - [ ] React Navigation
+  - [x] React Navigation
   - [x] Reanimated
   - [x] React Native WebView
 - [x] Functioning hot reload for both React Native and Flutter
