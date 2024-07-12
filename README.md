@@ -1,16 +1,21 @@
 # Flutter app with React Native brownfield POC
 
-<img src="https://raw.githubusercontent.com/callstack/flutter-brownfield/main/docs/images/flutter-react-love.jpg" />
+<p align="center">
+  <img src="https://raw.githubusercontent.com/callstack/flutter-brownfield/main/docs/images/flutter-react-love.jpg" alt="Flutter + React = Love" width="224" height="76" />
+</p>
+    
+This repo contains a proof-of-concept for adding React Native to an existing Flutter app for iOS and Android.
 
-This repository contains a proof-of-concept for adding React Native to an existing Flutter app.
-
-This app is a basic Flutter app with added React Native brownfield integration. It leverages both platforms' abilities to host native platform views, which serve as the briding layer. 
+It contains a basic Flutter app with added React Native brownfield integration. It leverages both platforms' abilities to host native platform views, which serve as the briding layer. 
 
 ## Scope
 
-* Basic React Native brownfield setup
-* Added some popular React Native libraries: React Navigation, Reanimated, React Native WebView.
-* Working hot reload for both React Native and Flutter
+- [x] Basic React Native brownfield setup
+- [x] Added some popular React Native libraries:
+  - [ ] React Navigation
+  - [x] Reanimated
+  - [x] React Native WebView
+- [x] Functioning hot reload for both React Native and Flutter
 
 ## Screenshots
 
