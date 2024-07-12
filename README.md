@@ -2,9 +2,9 @@
 
 <img src="https://raw.githubusercontent.com/callstack/flutter-brownfield/main/docs/images/flutter-react-love.png" />
 
-This is a proof-of-concept for adding React Native to an existing Flutter app.
+This repository contains a proof-of-concept for adding React Native to an existing Flutter app.
 
-This app is a basic Flutter app with added React Native brownfield integration. It works by leveraging both platforms' abilities to host native platform views, which serve as the briding layer. 
+This app is a basic Flutter app with added React Native brownfield integration. It leverages both platforms' abilities to host native platform views, which serve as the briding layer. 
 
 ## Scope
 
