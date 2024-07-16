@@ -49,12 +49,14 @@ class FLReactView: NSObject, FlutterPlatformView {
         arguments args: [String: Any]?,
         binaryMessenger messenger: FlutterBinaryMessenger?
     ) {
-        let jsCodeLocation = URL(string: "http://localhost:8081/index.bundle?platform=ios")!
+        guard let bridge = BridgeManager.shared.bridge else {
+            fatalError("BridgeManager.shared.bridge is nil. Make sure to call BridgeManager.shared.loadReactNative() before creating FLReactView.")
+        }
+
         reactRootView = RCTRootView(
-            bundleURL: jsCodeLocation,
+            bridge: bridge,
             moduleName: args!["moduleName"] as! String,
-            initialProperties: [:] as [NSObject : AnyObject],
-            launchOptions: nil
+            initialProperties: [:]
         )
         super.init()
     }
