@@ -44,6 +44,7 @@ import UIKit
             withId: "react_view"
         )
         
+        BridgeManager.shared.loadReactNative(launchOptions: launchOptions)
         return super.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
