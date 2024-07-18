@@ -8,6 +8,7 @@ import UIKit
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
+        // Register MethodChannel, so we can call it from Flutter code from native.
         let controller : FlutterViewController = window?.rootViewController as! FlutterViewController
         let channel = FlutterMethodChannel(
             name: "flutter-brownfield/native",
@@ -21,6 +22,7 @@ import UIKit
             }
             
             switch call.method {
+            // Trigger navigation to separate React Native ViewController for usage with React Navigation
             case "navigateToReactNative":
                 let args = call.arguments as! [String: Any];
                 let moduleName = args["moduleName"] as! String;
@@ -44,6 +46,7 @@ import UIKit
             withId: "react_view"
         )
         
+        // Load React Native to BridgeManager holder.
         BridgeManager.shared.loadReactNative(launchOptions: launchOptions)
         return super.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
@@ -56,12 +59,14 @@ import UIKit
     func presentReactNativeViewController(
         moduleName: String
     ) {
-        let jsCodeLocation = URL(string: "http://localhost:8081/index.bundle?platform=ios")!
+        guard let bridge = BridgeManager.shared.bridge else {
+            fatalError("BridgeManager.shared.bridge is nil. Make sure to call BridgeManager.shared.loadReactNative() before calling presentReactNativeViewController.")
+        }
+        
         let rootView = RCTRootView(
-            bundleURL: jsCodeLocation,
+            bridge: bridge,
             moduleName: moduleName,
-            initialProperties: [:] as [NSObject : AnyObject],
-            launchOptions: nil
+            initialProperties: [:]
         )
         
         let viewController = UIViewController()
