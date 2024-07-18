@@ -10,7 +10,9 @@ import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
 
 /**
- * Basic FlutterActivity extended with React Native lifecycle hooks/
+ * Basic FlutterActivity extended with React Native lifecycle hooks.
+ *
+ * This is hosting Flutter application as well as can draw React Native views using ReactView.
  *
  * See:
  * - https://reactnative.dev/docs/integration-with-existing-apps
@@ -39,7 +41,7 @@ class MainActivity: FlutterActivity(), DefaultHardwareBackBtnHandler {
             .registry
             .registerViewFactory("react_view", ReactViewFactory())
 
-        // Register MethodChannel, so we can call it from Flutter code.
+        // Register MethodChannel, so we can call it from Flutter code from native.
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, FLUTTER_CHANNEL).setMethodCallHandler {
                 call, result ->
             if (call.method == "navigateToReactNative") {
@@ -52,6 +54,8 @@ class MainActivity: FlutterActivity(), DefaultHardwareBackBtnHandler {
         }
     }
 
+    // This is used to start React Native component in a separate Activity for usage with React Navigation.
+    // Do not use this if you just want to embed ReactView in Flutter screen.
     private fun startReactNativeActivity(moduleName: String) {
         val intent = Intent(this, ReactActivity::class.java).apply {
             putExtra("moduleName", moduleName)
